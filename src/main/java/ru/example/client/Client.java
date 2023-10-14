@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Client {
@@ -18,8 +19,12 @@ public class Client {
             Scanner consoleReader = new Scanner(System.in);
             while (true) {
                 //TODO Вывод пока есть строка
-                String line = in.readLine();
-                System.out.println(line);
+                String line;
+                StringBuilder s = new StringBuilder();
+                while ((line = in.readLine()) != null) {
+                    s.append(line);
+                }
+                System.out.println(s);
                 String answer = consoleReader.nextLine();
                 if (answer.equals("exit")) {
                     break;
