@@ -8,7 +8,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class Server {
-    private static Krestiki krestiki;
 
     public static void main(String[] args) {
         System.out.println("Server started");
@@ -20,13 +19,11 @@ public class Server {
                      PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                      BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()))
                 ) {
-                    krestiki = new Krestiki(out, in);
-
                     System.out.printf("New connection accepted. Port %d%n", clientSocket.getPort());
                     out.println("Hi, user! What's your name?");
 
                     final String name = in.readLine();
-                    out.println(String.format("Hello %s, your port is %d", name, clientSocket.getPort()) + ". How old are you?");
+                    out.println(String.format("Hello %s, your port is %d. \"How old are you?\"", name, clientSocket.getPort()));
 
                     String age = in.readLine();
                     out.println(((Integer.parseInt(age) > 18) ? "Whats up bro?" : "How do you do fellow kids?") + "  1. Fine  2. Bad");
@@ -36,7 +33,7 @@ public class Server {
                             + "Would like to play some game with me?(yes/no)");
 
                     String playGame = in.readLine();
-                    out.println((playGame.equalsIgnoreCase("yes")) ? "krestiki.main()" :
+                    out.println((playGame.equalsIgnoreCase("yes")) ? "Let's play!" :
                             ("Thanks for dialog, " + name + ", you can white 'exit' to leave this dialog"));
                 }
             }
