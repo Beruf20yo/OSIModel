@@ -23,16 +23,21 @@ public class Server {
                     out.println("Hi, user! What's your name?");
 
                     final String name = in.readLine();
+
                     out.println(String.format("Hello %s, your port is %d. \"How old are you?\"", name, clientSocket.getPort()));
 
+
                     String age = in.readLine();
-                    out.println(((Integer.parseInt(age) > 18) ? "Whats up bro?" : "How do you do fellow kids?") + "  1. Fine  2. Bad");
+                    out.println(((Integer.parseInt(age) > 18) ? "Whats up bro?" : "How do you do fellow kids?"));
+                    out.println("1. Fine  2. Bad");
 
                     String stateOfMind = in.readLine();
-                    out.println(((Integer.parseInt(stateOfMind) == 1) ? "Happy for you buddy. " : "Everything will work out, don't worry. ")
-                            + "Would like to play some game with me?(yes/no)");
+                    out.println(((Integer.parseInt(stateOfMind) == 1) ? "Happy for you buddy. " :
+                            "Everything will work out, don't worry. "));
+                    out.println("Would like to play some game with me?(yes/no)");
 
                     String playGame = in.readLine();
+
                     out.println((playGame.equalsIgnoreCase("yes")) ? "Let's play!" :
                             ("Thanks for dialog, " + name + ", you can white 'exit' to leave this dialog"));
                 }
